@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Василиса Гордеева - Нутрициолог</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #5d9cec 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="20%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #c53030, #e53e3e);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(197, 48, 48, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(197, 48, 48, 0.4);
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-dark {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+        }
+        
+        .section-light {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        }
+        
+        .section-cherry {
+            background: linear-gradient(135deg, #c53030, #e53e3e);
+            color: white;
+        }
+        
+        .section-blue {
+            background: linear-gradient(135deg, #5d9cec, #74b9ff);
+            color: white;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #c53030;
+        }
+        
+        .section-dark h3, .section-cherry h3, .section-blue h3 {
+            color: #ffffff;
+        }
+        
+        /* Pain Points */
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .pain-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pain-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pain-list li {
+            padding: 12px 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pain-list li::before {
+            content: "❌ ";
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .solution-list li::before {
+            content: "✅ ";
+            color: #51cf66;
+        }
+        
+        /* Story Section */
+        .story {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .story::before {
+            content: '"';
+            font-size: 8rem;
+            color: #5d9cec;
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            opacity: 0.3;
+        }
+        
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card.featured {
+            border-color: #c53030;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured::before {
+            content: "⭐ ПОПУЛЯРНЫЙ";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c53030;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #c53030;
+            margin: 20px 0;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li::before {
+            content: "✓ ";
+            color: #51cf66;
+            font-weight: bold;
+        }
+        
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .result-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-card h4 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        
+        .contact-item {
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item strong {
+            color: #c53030;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .story {
+                padding: 30px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fadeInUp">
+                <h1>Худейте на 4-8 кг за месяц без подсчёта калорий и голодовок</h1>
+                <p>Система питания на основе проверенных сочетаний продуктов. Проверено на личном опыте и десятках довольных клиентов</p>
+                <a href="#pricing" class="cta-button">Выбрать свой тариф</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2>Знакомая история?</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <ul class="pain-list">
+                        <li>Сидите на диете — вес встал</li>
+                        <li>Считаете калории — срываетесь</li>
+                        <li>Едите "правильно" — результата нет</li>
+                        <li>После еды — тяжесть и усталость</li>
+                    </ul>
+                    <p><strong>Проблема не в количестве еды, а в том, КАК продукты работают вместе в организме.</strong></p>
+                </div>
+                
+                <div class="pain-card">
+                    <h3>Системы питания, в которых я работаю, решают это:</h3>
+                    <ul class="pain-list solution-list">
+                        <li>Правильные сочетания продуктов увеличивают эффективность питания в разы</li>
+                        <li>Едите досыта, получаете энергию, теряете вес естественно</li>
+                        <li>Никаких ограничений и подсчетов</li>
+                        <li>Работает с любыми продуктами</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="section section-light">
+        <div class="container">
+            <h2>Моя история с правильным питанием</h2>
+            <div class="story">
+                <h3>Когда столкнулась сама с диагнозом карцинома (рак молочной железы)</h3>
+                <p>Поняла, что стандартные методы не вполне эффективны. Нужен был научный подход!</p>
+                
+                <h3>Что я изучила и применила:</h3>
+                <ul class="solution-list">
+                    <li>Метод сочетаний продуктов (система Олеси Ревеко)</li>
+                    <li>Разработала авторские техники под разные случаи</li>
+                    <li>Проверила все на личном опыте</li>
+                </ul>
+                
+                <p><strong>Результат:</strong> восстановила здоровье, нормализовала вес, вернула энергию<br>
+                <strong>Теперь помогаю другим</strong> — система действительно работает!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methods Section -->
+    <section class="section section-cherry">
+        <div class="container">
+            <h2>Что я использую в работе</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>🔬 Научно обоснованные сочетания</h3>
+                    <p>Использую проверенные комбинации продуктов для максимального усвоения питательных веществ</p>
+                </div>
+                
+                <div class="pain-card">
+                    <h3>⚡ Индивидуальные техники</h3>
+                    <p>Адаптирую методы для сложных случаев и особых потребностей</p>
+                </div>
+                
+                <div class="pain-card">
+                    <h3>🎯 Персональный подход</h3>
+                    <p>Адаптация под ваше здоровье, предпочтения и образ жизни</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section section-light">
+        <div class="container">
+            <h2>Тарифы и услуги</h2>
+            <div class="pricing-grid">
+                
+                <!-- Trial -->
+                <div class="pricing-card">
+                    <h3>🔥 ПОПРОБУЙ</h3>
+                    <div class="price">от 3000₽</div>
+                    <p><strong>Пробная неделя для знакомства с системой</strong></p>
+                    
+                    <ul class="pricing-features">
+                        <li><strong>Базовая (3000₽):</strong> меню на 7 дней + инструкции</li>
+                        <li><strong>С поддержкой (5000₽):</strong> + ежедневная обратная связь + учёт аллергий</li>
+                    </ul>
+                    
+                    <a href="mailto:vasysia@mail.ru" class="cta-button">Заказать пробу</a>
+                </div>
+
+                <!-- Self-guided -->
+                <div class="pricing-card">
+                    <h3>⭐ САМОСТОЯТЕЛЬНЫЙ</h3>
+                    <div class="price">11 000₽</div>
+                    <p><strong>Для дисциплинированных и экономных</strong></p>
+                    
+                    <ul class="pricing-features">
+                        <li>Полный план питания на месяц</li>
+                        <li>Минимум готовки — экономия времени</li>
+                        <li>Еженедельный контроль + корректировки</li>
+                        <li>Инструкции для сохранения результата</li>
+                    </ul>
+                    
+                    <p><strong>Результат:</strong> -4-8 кг + энергия + красивая кожа + крепкий сон</p>
+                    
+                    <a href="mailto:vasysia@mail.ru" class="cta-button">Выбрать тариф</a>
+                </div>
+
+                <!-- Individual -->
+                <div class="pricing-card featured">
+                    <h3>💎 ИНДИВИДУАЛЬНЫЙ</h3>
+                    <div class="price">18 000₽</div>
+                    <p><strong>Максимальная поддержка и персонализация</strong></p>
+                    
+                    <ul class="pricing-features">
+                        <li>Всё из самостоятельного тарифа</li>
+                        <li>Ежедневная обратная связь</li>
+                        <li>Учёт всех аллергий и предпочтений</li>
+                        <li>Адаптация под семью</li>
+                        <li>Работа со срывами и аппетитом</li>
+                        <li>Психологическая поддержка</li>
+                    </ul>
+                    
+                    <p><strong>Результат:</strong> -4-8 кг + уверенность в себе + привлекательность + качество жизни</p>
+                    
+                    <a href="mailto:vasysia@mail.ru" class="cta-button">Выбрать тариф</a>
+                </div>
+            </div>
+
+            <!-- Special Offer -->
+            <div class="story" style="margin-top: 50px; text-align: center;">
+                <h3>🎁 СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</h3>
+                <p>При переходе с пробной недели на полный курс — <strong style="color: #c53030;">стоимость пробы засчитывается!</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section section-dark">
+        <div class="container" style="text-align: center;">
+            <h2>Начните менять жизнь уже сегодня</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px;">Каждый день промедления = лишние килограммы + потерянная энергия + плохое самочувствие</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📧 Email:</strong> <span style="color: #c53030; font-size: 1.2em;">vasysia@mail.ru</span>
+                </div>
+                <div class="contact-item">
+                    <strong>📱 Телефон:</strong> <span style="color: #c53030; font-size: 1.2em;">+7 (921) 789-59-32</span>
+                </div>
+                <div class="contact-item">
+                    <strong>👤 Нутрициолог:</strong> <span style="color: #2c3e50; font-size: 1.2em;">Гордеева Василиса Владимировна</span>
+                </div>
+                <div class="contact-item">
+                    <strong>🏛️ ИНН:</strong> <span style="color: #2c3e50; font-size: 1.2em;">781125532676</span>
+                </div>
+                
+                <a href="mailto:vasysia@mail.ru" class="cta-button" style="margin-top: 30px;">Написать сейчас</a>
+            </div>
+            
+            <p style="margin-top: 30px; font-style: italic; opacity: 0.8;">
+                <strong>P.S.</strong> Система работает только при вашем желании меняться. Если готовы — жду вас в программе!
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeInUp');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
